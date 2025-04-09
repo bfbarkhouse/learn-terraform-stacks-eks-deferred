@@ -10,7 +10,7 @@ deployment "development" {
     cluster_name        = "stacks-demo"
     kubernetes_version  = "1.30"
     region              = "us-east-2"
-    role_arn            = "<YOUR_ROLE_ARN>"
+    role_arn            = "arn:aws:iam::983083522813:role/stacks-bbarkhouse-training-Learn-Terraform-Stacks-deployments"
     identity_token      = identity_token.aws.jwt
     default_tags        = { stacks-preview-example = "eks-deferred-stack" }
   }

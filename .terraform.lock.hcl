@@ -65,7 +65,6 @@ provider "registry.terraform.io/hashicorp/random" {
 }
 provider "registry.terraform.io/hashicorp/helm" {
   version     = "3.0.0-pre2"
-  constraints = "3.0.0-pre2"
   hashes = [
     "h1:GuJGHn2rEFZ0AmYYokVDphkU79M4MJzqb6mOHu/5CPM=",
     "zh:232b6eac97603aa8edc9f0edaca5aec0a54baf0b81aceb048609a6ffece47940",

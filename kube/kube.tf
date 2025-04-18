@@ -7,6 +7,10 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = "~> 2.32.0"
     }
+    helm = {
+      source = "hashicorp/helm"
+      version = "3.0.0-pre2"
+    }
   }
 }
 
@@ -36,3 +40,29 @@ resource "kubernetes_manifest" "demo_workspace" {
     }
   }
 }
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  namespace  = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  version    = "7.8.26" # check for the latest
+
+  create_namespace = true
+
+  values = [
+    file("${path.module}/values-argocd.yaml")
+  ]
+}
+data "kubernetes_service" "argocd_server" {
+  metadata {
+    name      = "argocd-server"
+    namespace = "argocd"
+  }
+}
+
+output "argocd_url" {
+  value = data.kubernetes_service.argocd_server.status[0].load_balancer.ingress[0].hostname
+}
+
+
+

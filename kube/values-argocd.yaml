@@ -1,0 +1,8 @@
+server:
+  service:
+    type: LoadBalancer
+
+configs:
+  cm:
+    admin.enabled: true
+    timeout.reconciliation: 30s

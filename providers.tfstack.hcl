@@ -14,6 +14,10 @@ required_providers {
     source = "hashicorp/random"
     version = "~> 3.6.2"
   }
+  helm = {
+      source = "hashicorp/helm"
+      version = "3.0.0-pre2"
+    }
 }
 
 provider "aws" "main" {
@@ -37,6 +41,15 @@ provider "kubernetes" "main" {
     cluster_ca_certificate = component.cluster.cluster_ca
     token                  = component.cluster.cluster_token
   }
+}
+provider "helm" "main" {
+  config {
+    kubernetes {     
+    host                   = component.cluster.cluster_url
+    cluster_ca_certificate = component.cluster.cluster_ca
+    token                  = component.cluster.cluster_token
+  }
+}
 }
 
 provider "random" "main" {}

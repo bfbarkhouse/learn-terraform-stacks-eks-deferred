@@ -21,5 +21,6 @@ component "kube" {
 
   providers = {
     kubernetes = provider.kubernetes.main
+    helm = provider.helm.main
   }
 }

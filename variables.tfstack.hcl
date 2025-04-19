@@ -30,3 +30,6 @@ variable "default_tags" {
 variable "admin_arn" {
   type = string  
 }
+variable "admin_role_name" {
+  type = string 
+}

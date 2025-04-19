@@ -14,6 +14,7 @@ component "cluster" {
     kubernetes_version = var.kubernetes_version
     region = var.region
     admin_arn = var.admin_arn
+    admin_role_name = var.admin_role_name
   }
 }
 

@@ -79,6 +79,7 @@ data "kubernetes_service" "argocd_server" {
     name      = "argocd-server"
     namespace = "argocd"
   }
+  depends_on = [ helm_release.argocd ]
 }
 
 output "argocd_url" {

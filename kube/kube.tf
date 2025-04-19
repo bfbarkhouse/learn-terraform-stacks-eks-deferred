@@ -23,7 +23,7 @@ resource "kubernetes_config_map" "aws_auth" {
   data = {
     mapRoles = yamlencode([
       {
-      rolearn = data.aws_iam_role.eks_admin.arn
+      rolearn = component.cluster.outputs.admin_arn
       username = "eks-admin"
       groups = [
         "system:masters"

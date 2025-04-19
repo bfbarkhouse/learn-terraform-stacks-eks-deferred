@@ -14,6 +14,25 @@ terraform {
   }
 }
 
+resource "kubernetes_config_map" "aws_auth" {
+  metadata {
+    name      = "aws-auth"
+    namespace = "kube-system"
+  }
+
+  data = {
+    mapRoles = yamlencode([
+      {
+      rolearn = data.aws_iam_role.eks_admin.arn
+      username = "eks-admin"
+      groups = [
+        "system:masters"
+      ]
+      }
+    ])
+  
+}
+}
 resource "kubernetes_namespace_v1" "demo_ns" {
   metadata {
     name = "demo-ns"

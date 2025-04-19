@@ -61,7 +61,7 @@ resource "aws_iam_role_policy_attachment" "demo-AmazonEC2ContainerRegistryReadOn
 }
 
 data "aws_iam_role" "eks_admin" {
-  name = "aws_bbarkhouse_test-developer"
+  name = var.admin_arn
 }
 
 resource "aws_iam_role_policy_attachment" "eks_admin_access" {

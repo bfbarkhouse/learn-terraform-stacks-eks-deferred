@@ -13,5 +13,6 @@ deployment "development" {
     role_arn            = "arn:aws:iam::983083522813:role/stacks-bbarkhouse-training-Learn-Terraform-Stacks-deployments"
     identity_token      = identity_token.aws.jwt
     default_tags        = { stacks-preview-example = "eks-deferred-stack" }
+    admin_arn = "arn:aws:iam::983083522813:role/aws_bbarkhouse_test-developer"
   }
 }

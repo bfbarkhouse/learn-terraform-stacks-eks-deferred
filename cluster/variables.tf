@@ -17,3 +17,6 @@ variable "workers_count" {
 variable "region" {
   type = string
 }
+variable "admin_arn" {
+  type = string
+}

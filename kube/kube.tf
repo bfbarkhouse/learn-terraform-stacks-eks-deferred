@@ -23,7 +23,7 @@ resource "kubernetes_config_map" "aws_auth" {
   data = {
     mapRoles = yamlencode([
       {
-      rolearn = componment.cluster.admin_arn
+      rolearn = var.admin_arn
       username = "eks-admin"
       groups = [
         "system:masters"
@@ -38,7 +38,9 @@ resource "kubernetes_namespace_v1" "demo_ns" {
     name = "demo-ns"
   }
 }
-
+variable "admin_arn" {
+  type = string 
+}
 resource "kubernetes_manifest" "demo_workspace" {
   manifest = {
     apiVersion = "app.terraform.io/v1alpha2"

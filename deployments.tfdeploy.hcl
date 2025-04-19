@@ -14,5 +14,6 @@ deployment "development" {
     identity_token      = identity_token.aws.jwt
     default_tags        = { stacks-preview-example = "eks-deferred-stack" }
     admin_arn = "arn:aws:iam::983083522813:role/aws_bbarkhouse_test-developer"
+    admin_role_name = "aws_bbarkhouse_test-developer"
   }
 }

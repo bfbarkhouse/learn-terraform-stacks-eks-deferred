@@ -20,3 +20,6 @@ variable "region" {
 variable "admin_arn" {
   type = string
 }
+variable "admin_role_name" {
+  type = string
+}

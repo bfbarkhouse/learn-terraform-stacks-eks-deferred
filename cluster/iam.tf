@@ -60,36 +60,37 @@ resource "aws_iam_role_policy_attachment" "demo-AmazonEC2ContainerRegistryReadOn
   role       = aws_iam_role.demo-node.name
 }
 
-resource "aws_iam_role_policy" "eks_admin_role" {
-  name = "EKSAdminRole"
-  role = "aws_bbarkhouse_test-developer"
-  policy = jsonencode(
-    {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "eks:ListFargateProfiles",
-                "eks:DescribeNodegroup",
-                "eks:ListNodegroups",
-                "eks:ListUpdates",
-                "eks:AccessKubernetesApi",
-                "eks:ListAddons",
-                "eks:DescribeCluster",
-                "eks:DescribeAddonVersions",
-                "eks:ListClusters",
-                "eks:ListIdentityProviderConfigs",
-                "iam:ListRoles"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "ssm:GetParameter",
-            "Resource": "arn:aws:ssm:*:111122223333:parameter/*"
-        }
-    ]
-}
-  )
-}
+# resource "aws_iam_role_policy" "eks_admin_role" {
+#   name = "EKSAdminRole"
+#   role = "aws_bbarkhouse_test-developer"
+#   #role = var.admin_role_name
+#   policy = jsonencode(
+#     {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Action": [
+#                 "eks:ListFargateProfiles",
+#                 "eks:DescribeNodegroup",
+#                 "eks:ListNodegroups",
+#                 "eks:ListUpdates",
+#                 "eks:AccessKubernetesApi",
+#                 "eks:ListAddons",
+#                 "eks:DescribeCluster",
+#                 "eks:DescribeAddonVersions",
+#                 "eks:ListClusters",
+#                 "eks:ListIdentityProviderConfigs",
+#                 "iam:ListRoles"
+#             ],
+#             "Resource": "*"
+#         },
+#         {
+#             "Effect": "Allow",
+#             "Action": "ssm:GetParameter",
+#             "Resource": "arn:aws:ssm:*:111122223333:parameter/*"
+#         }
+#     ]
+# }
+#   )
+# }

@@ -60,11 +60,7 @@ resource "aws_iam_role_policy_attachment" "demo-AmazonEC2ContainerRegistryReadOn
   role       = aws_iam_role.demo-node.name
 }
 
-data "aws_iam_role" "eks_admin" {
-  name = var.admin_arn
-}
-
 resource "aws_iam_role_policy_attachment" "eks_admin_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFullAccess"
-  role       = data.aws_iam_role.eks_admin.name
+  role       = var.admin_arn
 }

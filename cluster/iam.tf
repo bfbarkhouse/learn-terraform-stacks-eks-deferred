@@ -62,7 +62,7 @@ resource "aws_iam_role_policy_attachment" "demo-AmazonEC2ContainerRegistryReadOn
 
 resource "aws_iam_role_policy" "eks_admin_role" {
   name = "EKSAdminRole"
-  role = var.admin_arn
+  role = "aws_bbarkhouse_test-developer"
   policy = jsonencode(
     {
     "Version": "2012-10-17",

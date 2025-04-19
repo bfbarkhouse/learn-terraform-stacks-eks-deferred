@@ -27,3 +27,6 @@ variable "default_tags" {
   type        = map(string)
   default     = {}
 }
+variable "admin_arn" {
+  type = string  
+}

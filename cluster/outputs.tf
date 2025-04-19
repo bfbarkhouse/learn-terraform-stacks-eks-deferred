@@ -14,5 +14,5 @@ output "cluster_token" {
   value = data.aws_eks_cluster_auth.demo.token
 }
 output "admin_arn" {
-  value = aws_iam_role.eks_admin.arn
+  value = data.aws_iam_role.eks_admin.arn
 }

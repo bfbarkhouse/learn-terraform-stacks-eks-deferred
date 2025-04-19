@@ -60,7 +60,36 @@ resource "aws_iam_role_policy_attachment" "demo-AmazonEC2ContainerRegistryReadOn
   role       = aws_iam_role.demo-node.name
 }
 
-resource "aws_iam_role_policy_attachment" "eks_admin_access" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFullAccess"
-  role       = var.admin_arn
+resource "aws_iam_role_policy" "eks_admin_role" {
+  name = "EKSAdminRole"
+  role = var.admin_arn
+  policy = jsonencode(
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:ListFargateProfiles",
+                "eks:DescribeNodegroup",
+                "eks:ListNodegroups",
+                "eks:ListUpdates",
+                "eks:AccessKubernetesApi",
+                "eks:ListAddons",
+                "eks:DescribeCluster",
+                "eks:DescribeAddonVersions",
+                "eks:ListClusters",
+                "eks:ListIdentityProviderConfigs",
+                "iam:ListRoles"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ssm:GetParameter",
+            "Resource": "arn:aws:ssm:*:111122223333:parameter/*"
+        }
+    ]
+}
+  )
 }
